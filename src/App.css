@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.emptySpace {
+  width: 15px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.numberItems {
+  width: 40px;
+}
+
+.Products {
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  height: 1200px;
+  width: 100vw;
+}
+
+.productCard {
+  height: 150px;
+  width: 200px;
+}
+
+.productImage {
+  height: 250px;
+  width: 200px;
+}

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import RouteSwitch from './components/RouteSwitch';
 
@@ -7,6 +6,7 @@ function App() {
     <div className="App">
       <div className='navbar'>
         <span>Homepage</span>
+        <span className='emptySpace'></span>
         <span>Products</span>
       </div>
       <RouteSwitch />
