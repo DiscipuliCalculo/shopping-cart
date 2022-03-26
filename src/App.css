@@ -55,7 +55,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  height: 1200px;
+  height: 850px;
   width: 100vw;
 }
 
@@ -65,6 +65,6 @@
 }
 
 .productImage {
-  height: 250px;
+  height: 200px;
   width: 200px;
 }

@@ -1,61 +1,47 @@
-import { render } from "@testing-library/react";
-import { useState } from "react";
-import {itemList, ShoppingCartInfo} from "./ShoppingCart";
+import React from "react"
+import ShoppingCart from "./ShoppingCart";
 
-function ProductCard(props) {
-    let [Amount, setNum] = useState(0);
-    let [productList, setState] = useState(itemList)
-
-    let Increment =() => {
-        setNum(Number(Amount) + 1)
-    }
-
-    let Decrement = () => {
-        if (Amount > 0) {
-            setNum(Number(Amount) + 1)
+class ProductCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            amount: 0,
+            key: props.key,
+            id: props.id,
+            price: props.price,
+            name: props.name,
+            image: props.image
         }
+
+        this.Increment = this.Increment.bind(this)
+        this.Decrement = this.Decrement.bind(this)
+        this.onChange = this.onChange.bind(this)
     }
 
-    let handleChange = (e) => {
-        setNum(e.target.value);
-    }
+    Increment = () => this.setState({amount: Number(this.state.amount) + 1})
 
-    function addtoCart(e) {
-        e.preventDefault()
+    Decrement = () => this.setState({amount: Number(this.state.amount) - 1})
 
-        const found = itemList.findIndex(item => item.itemId === props.id);
-        if (found === -1) {
-            itemList.push({
-            itemId: props.id,
-            itemName: props.name,
-            itemAmount: Amount,
-            itemPrice: props.price
-            });
-        }
-        else {
-            itemList[found].itemAmount = itemList[found].itemAmount + Amount;
-        }
-        setState({productList: itemList});
-    }
+    onChange = e => this.setState({ [e.target.name]: e.target.value})
 
-    return (
-        <div className="productCard" key={props.id}>
-            <div><h4>{props.name}</h4></div>
-            <div><img className="productImage" index={props.id} src={props.image} alt={props.name} /></div>
-            <form name={props.name} onSubmit={addtoCart} >
-                <p>${props.price}</p>
+    addtoCart = () => {}
+
+
+    render() {
+        return(
+            <div className="ProductCard" key={this.state.key}>
+                <div><h4>{this.state.name}</h4></div>
+                <div><img className="productImage" src={this.state.image} alt={this.state.name}/></div>
                 <div>
-                    <span><button type='button' onClick={Increment}>+</button></span>
-                    <span><input type='text' value={Amount} className="numberItems" onChange={handleChange}></input></span>
-                    <span><button type='button' onClick={Decrement}>-</button></span>
+                    <p>{this.state.price}</p>
+                    <span><button type="button" onClick={this.Increment}>+</button></span>
+                    <span><input type='text' className='nubmerItems' name="numberItems" value={this.state.amount} onChange={this.onChange}></input></span>
+                    <span><button type="button" onClick={this.Decrement}>-</button></span>
                 </div>
-                <div>
-                    <input type="submit" value="Add to Cart"/>
-                </div>
-            </form>
-            <ShoppingCartInfo shoppingList={productList}/>
-        </div>
-    )
+                <button type="button" onClick={() => this.props.action(this.state.id, this.state.name, this.state.price, this.state.amount)}>Add to Cart</button>
+            </div>
+        )
+    }
 }
 
 export default ProductCard;
