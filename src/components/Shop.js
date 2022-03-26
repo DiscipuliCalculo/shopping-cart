@@ -1,7 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import productList from "./productList";
-import Cart from "./Cart";
 
 
 class Shop extends React.Component {
@@ -23,34 +22,19 @@ class Shop extends React.Component {
         }
     }
 
-    /*
-    handleClick = (e) => {
-        e.preventDefault();
-        if (this.state.insideCart.length === 0) {
-            this.setState({ 
-                insideCart: this.state.insideCart.concat([{id: this.props.id, name: this.props.name, price: this.props.price, amount: this.props.amount}])
-            }, () => {console.log(this.state.insideCart)})
-        }
-        else {
-            const newAmount = this.state.insideCart[0].amount + this.props.amount
-            this.setState({
-                insideCart: [{id: this.props.id, name: this.props.name, price: this.props.price, amount: newAmount}]
-            }, () => {console.log(this.state.insideCart[0])})
-        }
-    }
-    */
-
     render() {
         let totalAmount = 0;
+        let totalPrice = 0;
         for (let i = 0; i < this.state.insideCart.length; i++) {
             totalAmount = totalAmount + this.state.insideCart[i].amount;
+            totalPrice = totalPrice + (this.state.insideCart[i].amount * this.state.insideCart[i].price)
         }
         totalAmount = totalAmount.toString();
-        
+        totalPrice = totalPrice.toString();
 
         return (
             <div>
-                <div><p>{totalAmount}</p></div>
+                <div>Number of Items: {totalAmount} Cost: ${totalPrice}</div>
                 <div><img src="" alt="" /></div>
                 <div className="Products">
                     {productList.map((product) => <ProductCard 

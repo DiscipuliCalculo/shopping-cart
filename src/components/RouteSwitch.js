@@ -1,14 +1,10 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Homepage from "./Homepage";
 import Shop from "./Shop";
-import Cart from "./Cart";
-import ShoppingCart from "./ShoppingCart";
-
 
 const RouteSwitch = () => {
 
     const navigate = useNavigate();
-    const [cart, updateCart] =([])
 
     const handleHomepage = () => {
       navigate('/');
@@ -17,10 +13,7 @@ const RouteSwitch = () => {
     const handleShop = () => {
       navigate('/shop');
     }
-  
-    const handleCart = () => {
-      navigate('/cart');
-    }
+
 
     return (
         <div className="App">

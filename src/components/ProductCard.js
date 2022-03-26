@@ -1,5 +1,4 @@
 import React from "react"
-import ShoppingCart from "./ShoppingCart";
 
 class ProductCard extends React.Component {
     constructor(props) {
