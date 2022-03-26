@@ -28,13 +28,10 @@ const RouteSwitch = () => {
                 <span onClick={handleHomepage}>Homepage</span>
                 <span className='emptySpace'></span>
                 <span onClick={handleShop}>Shop</span>
-                <span className='emptySpace'></span>
-                <span onClick={handleCart}>Cart</span>
             </div>
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/cart" element={<ShoppingCart />} />
             </Routes>
         </div>
     );
